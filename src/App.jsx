@@ -1,4 +1,4 @@
-import Quotes from './dashboard/quotes';
+import Quotes from './dashboard/quotes/Quotes';
 import Footer from './dashboard/components/Footer'
 
 function App() {

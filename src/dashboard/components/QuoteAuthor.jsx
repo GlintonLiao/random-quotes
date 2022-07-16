@@ -1,9 +1,9 @@
 import React from 'react';
 
-const QuoteAuthor = () => {
+const QuoteAuthor = (props) => {
   return (
-    <div>
-      
+    <div className='quote-author' style={{color: props.color}}>
+      <span id='author'>{props.author}</span>
     </div>
   );
 }

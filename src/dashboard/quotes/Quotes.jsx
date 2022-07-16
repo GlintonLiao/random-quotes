@@ -10,31 +10,26 @@ const Quotes = () => {
   const [state, setState] = useState({
     quote: "The Best Richness, is the Richness of Soul",
     author: "Prophet Muhammad(Peace be upon him)",
-    quotesData: [],
     color: "rgb(243 , 156 , 18)",
   });
+  const [quotesData, setQuotesData] = useState([]);
 
   const fetchQuotes = () => {
     axios
       .get("https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json")
       .then((res) => {
         const quotesData = [...res.data.quotes];
-        const color = randomColor();
-        document.body.style.color = color;
-        document.body.style.backgroundColor = color;
+        // const color = randomColor();
+        // document.body.style.color = color;
+        // document.body.style.backgroundColor = color;
 
-        setState({
-          quotesData: quotesData,
-          color: color,
-        })
+        setQuotesData(quotesData);
       })
       .catch(err => console.log(err));
   };
 
   useEffect(() => {
-    if (state.quotesData.length === 0) {
-      fetchQuotes();
-    }
+    fetchQuotes();
   }, []);
 
   const randomColor = () => {
@@ -48,7 +43,7 @@ const Quotes = () => {
 
   const handleClick = () => {
     let randomIdx = Math.floor(Math.random() * 16);
-    let { quote, author } = state.quotesData[randomIdx];
+    let { quote, author } = quotesData[randomIdx];
 
     const color = randomColor();
     document.body.style.color = color;
@@ -59,6 +54,8 @@ const Quotes = () => {
       author: author,
       color: color,
     });
+
+    console.log(randomIdx);
   };
 
   return (

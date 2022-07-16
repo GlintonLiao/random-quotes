@@ -1,9 +1,9 @@
 import React from 'react';
 
-const QuoteText = () => {
+const QuoteText = (props) => {
   return (
-    <div>
-      
+    <div className='quote-text' style={{color: props.color}}>
+      <span id='text'>{props.quote}</span>
     </div>
   );
 }
